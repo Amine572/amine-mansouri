@@ -69,16 +69,16 @@
 				 </div>
 			</div>
 			
-			<div th:if="${#lists.isEmpty(produits)}" class="alert alert-danger alert-dismissible fade show"
+			<div th:if="${#lists.isEmpty(categories)}" class="alert alert-danger alert-dismissible fade show"
 						role="alert">
-						<strong>Aucun produit trouvé!</strong> La liste des produits est vide !
+						<strong>Aucune categorie trouvé!</strong> La liste des categories est vide !
 			</div>
 			
  	 
 
-		<div th:if="${not #lists.isEmpty(produits)}"  class="row">
+		<div th:if="${not #lists.isEmpty(categories)}"  class="row">
 		<div class="col-md-11">
-			<h1> Liste des Produits </h1>
+			<h1> Liste des Categories </h1>
 		</div>
 		<div class="col-md-1">
 			<button class="btn btn-warning pull-right"	data-toggle="modal" data-target="#clearModal" data-dismiss="modal">
@@ -91,18 +91,14 @@
 
 
 <!-- 		<table  id="prodtable" class="table table-striped"> -->
-		<table th:if="${not #lists.isEmpty(produits)}"  id="prodtable" class="table table-striped table-bordered">
+		<table th:if="${not #lists.isEmpty(categories)}"  id="prodtable" class="table table-striped table-bordered">
 		
 			<thead>
 				<tr>
 				   <th>#ID</th>
-					<th>Catégorie</th>
-					<th>Désignation</th>
-					<th>Prix</th>
-					<th>Qté</th>
-					<th>Config.</th>
-					<th>Marque</th>
-					<th>Modèle</th>
+					<th>CodeCategorie</th>
+					<th>LibelleCategorie</th>
+					
 					
 					<th>Action</th>
 				</tr>
@@ -110,47 +106,39 @@
 			<tfoot>
         	    <tr>
  
-				   <th>#ID</th>
-					<th>Catégorie</th>
-					<th>Désignation</th>
-					<th>Prix</th>
-					<th>Qté</th>
-					<th>Config.</th>
-					<th>Marque</th>
-					<th>Modèle</th>
+					<th>#ID</th>
+					<th>CodeCategorie</th>
+					<th>LibelleCategorie</th>
          	   </tr>
        		 </tfoot>
        	   <tbody>
 			
 		 		
  				
-				<tr th:each="prod: ${produits}" 
+				<tr th:each="ctg: ${categories}" 
 				
 				th:with=
-				"getUrl=${'/produit/get/'},
-				updateUrl=${'/produit/update/'},
-				deleteUrl=${'/produit/delete/'}
+				"getUrl=${'/categorie/get/'},
+				updateUrl=${'/categorie/update/'},
+				deleteUrl=${'/categorie/delete/'}
 				"
 				>	 
 		  <!-- th:with sert à déclarer des variables locales tels que les URLs -->
 				
-					<td width="5%" th:text="${prod.idProduit}" th:with="id=${prod.idProduit}"></td>
-					<td width="5%" th:text="${prod.categorie.idCateg}"></td>
-					<td width="10%" th:text="${prod.desigProduit}"></td>
-					<td width="10%" th:text="${prod.puProduit}"></td>
-					<td width="10%" th:text="${prod.qteProduit}"></td>
-					<td width="30%" th:text="${prod.configProduit}"></td>
-					<td width="15%" th:text="${prod.marqueProduit}"></td>
-					<td width="15%" th:text="${prod.modeleProduit}"></td>
+					<td width="5%" th:text="${ctg.idCateg}" th:with="id=${ctg.idCateg}"></td>
+					<td width="5%" th:text="${ctg.codeCateg}"></td>
+					<td width="10%" th:text="${ctg.libelleCateg}"></td>
+					
+					
 					<td>
-						<button class="btn btn-success"	th:onclick="|window.location.href='@{${getUrl}+${prod.idProduit}}'|" >
+						<button class="btn btn-success"	th:onclick="|window.location.href='@{${getUrl}+${ctg.idCateg}}'|" >
 						show
 						</button> 
-						<button class="btn btn-primary" th:onclick="|window.location.href='@{${updateUrl}+${prod.idProduit}}'|" >
+						<button class="btn btn-primary" th:onclick="|window.location.href='@{${updateUrl}+${ctg.idCateg}}'|" >
 						update
 						</button>
 						
-						<button type="button" class="btn btn-danger" th:onclick="|window.location.href='@{${deleteUrl}+${prod.idProduit}}'|" >
+						<button type="button" class="btn btn-danger" th:onclick="|window.location.href='@{${deleteUrl}+${ctg.idCateg}}'|" >
 						detele
 						</button>
 						
@@ -174,8 +162,8 @@
 			    	<h4> <span class="glyphicon  glyphicon-trash"></span> Confirmer Suppresion</h4>
 		        </div>
 		        <div class="modal-body">
-			       <h3>êtes vous sûr de vouloir supprimer définitivement ce produit ?
-			      	 <br><small>Sa suppression va engendrer la suppression de toutes ses commandes !</small>
+			       <h3>êtes vous sûr de vouloir supprimer définitivement cette categorie ?
+			      	 <br><small>Sa suppression va engendrer la suppression de toutes ses categories !</small>
 			         <br><br><small>NB: Cette opération est irréversible !</small>
 			        </h3>
 		        </div>
@@ -184,7 +172,7 @@
 		          	 	<span class="glyphicon glyphicon-remove"></span>Annuler
 		           </button>
 		           
-<!-- 		       <button type="button" class="btn btn-danger" data-toggle="modal" th:onclick="|window.location.href='@{${'/produit/delete/'}+${id}}'|"   > -->
+<!-- 		       <button type="button" class="btn btn-danger" data-toggle="modal" th:onclick="|window.location.href='@{${'/categorie/delete/'}+${id}}'|"   > -->
 		           <button type="button" class="btn btn-danger" data-toggle="modal" onclick="#"   >
 						<span class="glyphicon glyphicon-trash"></span> Supprimer
 				  </button>
@@ -204,8 +192,8 @@
 			    	<h4> <span class="glyphicon  glyphicon-trash"></span> Confirmer Vidage</h4>
 		        </div>
 		        <div class="modal-body">
-			       <h3>êtes-vous sûr de vouloir vider la liste de toutes les produits ? 
-			      	 <br><small>Ce vidage engendrer systématiquement la suppression de toutes ses commandes!</small>
+			       <h3>êtes-vous sûr de vouloir vider la liste de toutes les categories ? 
+			      	 <br><small>Ce vidage engendrer systématiquement la suppression de toutes ses categories!</small>
 			      	 <br><br><small>NB: Cette opération est irréversible !</small>
 			      	 
 				   </h3>
@@ -214,7 +202,7 @@
 		           <button type="button" class="btn btn-default" data-dismiss="modal">
 		          	 	<span class="glyphicon glyphicon-remove"></span>Annuler
 		           </button>
-		           <button type="button" class="btn btn-warning" th:onclick="|window.location.href='@{${'/produit/clear'}}'|"  >
+		           <button type="button" class="btn btn-warning" th:onclick="|window.location.href='@{${'/categorie/clear'}}'|"  >
 						<span class="glyphicon glyphicon-trash"></span> Supprimer Tout
 				  </button>
 		        </div>
