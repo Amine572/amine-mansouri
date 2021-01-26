@@ -34,6 +34,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import tn.rnu.isi.eschop.model.Produit;
 import tn.rnu.isi.eschop.service.ProduitService;
+import tn.rnu.isi.eschop.model.Commande;
+import tn.rnu.isi.eschop.service.CommandeService;
+
+import tn.rnu.isi.eschop.model.Client;
+import tn.rnu.isi.eschop.service.ClientService;
+
+import tn.rnu.isi.eschop.model.Categorie;
+import tn.rnu.isi.eschop.service.CategorieService;
 
 
  
