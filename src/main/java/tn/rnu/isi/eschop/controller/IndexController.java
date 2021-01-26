@@ -31,17 +31,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
 import tn.rnu.isi.eschop.model.Produit;
 import tn.rnu.isi.eschop.service.ProduitService;
-
-import tn.rnu.isi.eschop.model.Commande;
-import tn.rnu.isi.eschop.service.CommandeService;
-
-import tn.rnu.isi.eschop.model.Client;
-import tn.rnu.isi.eschop.service.ClientService;
-
-import tn.rnu.isi.eschop.model.Categorie;
-import tn.rnu.isi.eschop.service.CategorieService;
 
 
  
@@ -57,9 +49,7 @@ public class IndexController {
 
 	@Autowired
 	ProduitService produitService;
-	CommandeService commandeService;
-	ClientService clientService;
-	CategorieService categorieService;
+	
 	
 	@RequestMapping(value="/", method= RequestMethod.GET)
 	public String index(Map<String, Object> model) throws Exception {
@@ -86,7 +76,7 @@ public class IndexController {
 			model.addAttribute("produitForm", produit);
 
 	 
-			 return "/produit/addUpdateProduit";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
+			 return "produit/addUpdateProduit";// C'est le nom de la page html à rediriger (newProduit.jsp)
 
 		}
 		
@@ -104,102 +94,7 @@ public class IndexController {
 			/*
 			 * Envoi Vue + Modèle MVC pour Affichage données vue
 			 */
-			return new ModelAndView("/produit/showAllProduits", "produits", listeProduits);
-		} 
-
-		// show new Commande form
-		@RequestMapping(value = "/commande/new", method = RequestMethod.GET)
-		public String showNewCommande(Model model) {
-
-			logger.debug(":::showNewCommande:::");
-
-			Commande commande = new Commande();
-			
-			model.addAttribute("commandeForm", commande);
-
-	 
-			 return "/commande/addUpdateCommande";// C'est le nom de la page JSP à rediriger (newCommande.jsp)
-
-		}
-		
-	
-				
-	 // show list of All Commande
-		@RequestMapping({"/commande/listAll","commandeList"})
-		protected ModelAndView lisAllCommandes(HttpServletRequest request,
-				HttpServletResponse response) throws Exception {
-			/*
-			 * Lancement du Service et récupération données en base
-			 */
-			List<Commande> listeCommandes = commandeService.getAll();
-
-			/*
-			 * Envoi Vue + Modèle MVC pour Affichage données vue
-			 */
-			return new ModelAndView("/commande/showAllCommandes", "commandes", listeCommandes);
-		} 
-		// show new Client form
-		@RequestMapping(value = "/client/new", method = RequestMethod.GET)
-		public String showNewClient(Model model) {
-
-			logger.debug(":::showNewClient:::");
-
-			Client client = new Client();
-			
-			model.addAttribute("clientForm", client);
-
-	 
-			 return "/client/addUpdateClient";// C'est le nom de la page JSP à rediriger (newClient.jsp)
-
-		}
-		
-	
-				
-	 // show list of All Client
-		@RequestMapping({"/client/listAll","clientList"})
-		protected ModelAndView lisAllClients(HttpServletRequest request,
-				HttpServletResponse response) throws Exception {
-			/*
-			 * Lancement du Service et récupération données en base
-			 */
-			List<Client> listeClients = clientService.getAll();
-
-			/*
-			 * Envoi Vue + Modèle MVC pour Affichage données vue
-			 */
-			return new ModelAndView("/client/showAllClients", "clients", listeClients);
-		} 
-
-		// show new Categorie form
-		@RequestMapping(value = "/categorie/new", method = RequestMethod.GET)
-		public String showNewCategorie(Model model) {
-
-			logger.debug(":::showNewCategorie:::");
-
-			Categorie categorie = new Categorie();
-			
-			model.addAttribute("categorieForm", categorie);
-
-	 
-			 return "/categorie/addUpdateCategorie";// C'est le nom de la page JSP à rediriger (newCategorie.jsp)
-
-		}
-		
-	
-				
-	 // show list of All Categorie
-		@RequestMapping({"/categorie/listAll","categorieList"})
-		protected ModelAndView lisAllCategories(HttpServletRequest request,
-				HttpServletResponse response) throws Exception {
-			/*
-			 * Lancement du Service et récupération données en base
-			 */
-			List<Categorie> listeCategories = categorieService.getAll();
-
-			/*
-			 * Envoi Vue + Modèle MVC pour Affichage données vue
-			 */
-			return new ModelAndView("/categorie/showAllCategories", "categories", listeCategories);
+			return new ModelAndView("produit/showAllProduits", "produits", listeProduits);
 		} 
 	
 }
