@@ -1,4 +1,4 @@
-package tn.rnu.isi.model;
+package tn.rnu.isi.eschop.model;
 // Generated 22 nov. 2016 03:13:26 by Hibernate Tools 4.3.5.Final
 
 import java.util.Date;
@@ -94,7 +94,7 @@ public class Commande implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "dd/mm/yyyy")
 	@Column(name = "DATE_COMMANDE", length = 10)
 	public Date getDateCommande() {
 		return this.dateCommande;

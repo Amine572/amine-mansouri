@@ -1,4 +1,4 @@
-package tn.rnu.isi.service;
+package tn.rnu.isi.eschop.service;
  
 
 import java.util.List;
@@ -12,9 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
 
-import tn.rnu.isi.model.Produit;
-
-
+import tn.rnu.isi.eschop.model.*;
 
 
  

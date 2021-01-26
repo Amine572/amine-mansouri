@@ -1,9 +1,8 @@
-package tn.rnu.isi.service;
+package tn.rnu.isi.eschop.service;
 
 import java.util.List;
 
-import tn.rnu.isi.model.Produit;
-
+import tn.rnu.isi.eschop.model.*;
  
 
 
