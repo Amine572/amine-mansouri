@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
 
-import tn.rnu.isi.model.Client;
+import tn.rnu.isi.eschop.model.Client;
 
 
 

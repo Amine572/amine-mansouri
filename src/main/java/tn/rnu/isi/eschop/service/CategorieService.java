@@ -2,7 +2,7 @@ package tn.rnu.isi.eschop.service;
 
 import java.util.List;
 
-import tn.rnu.isi.model.Categorie;
+import tn.rnu.isi.eschop.model.Categorie;
 
  
 

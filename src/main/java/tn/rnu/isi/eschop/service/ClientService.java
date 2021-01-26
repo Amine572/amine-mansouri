@@ -3,7 +3,7 @@ package tn.rnu.isi.eschop.service;
 import java.util.Date;
 import java.util.List;
 
-import tn.rnu.isi.model.Client;
+import tn.rnu.isi.eschop.model.Client;
 
 
  

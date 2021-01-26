@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import tn.rnu.isi.model.Client;
-import tn.rnu.isi.service.ClientService;
+import tn.rnu.isi.eschop.model.Client;
+import tn.rnu.isi.eschop.service.ClientService;
 
 
  

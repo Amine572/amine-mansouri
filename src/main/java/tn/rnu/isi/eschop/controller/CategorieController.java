@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import tn.rnu.isi.model.Categorie;
-import tn.rnu.isi.service.CategorieService;
+import tn.rnu.isi.eschop.model.Categorie;
+import tn.rnu.isi.eschop.service.CategorieService;
 
 
  

@@ -31,17 +31,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import tn.rnu.isi.model.Produit;
-import tn.rnu.isi.service.ProduitService;
+import tn.rnu.isi.eschop.model.Produit;
+import tn.rnu.isi.eschop.service.ProduitService;
 
-import tn.rnu.isi.model.Commande;
-import tn.rnu.isi.service.CommandeService;
+import tn.rnu.isi.eschop.model.Commande;
+import tn.rnu.isi.eschop.service.CommandeService;
 
-import tn.rnu.isi.model.Client;
-import tn.rnu.isi.service.ClientService;
+import tn.rnu.isi.eschop.model.Client;
+import tn.rnu.isi.eschop.service.ClientService;
 
-import tn.rnu.isi.model.Categorie;
-import tn.rnu.isi.service.CategorieService;
+import tn.rnu.isi.eschop.model.Categorie;
+import tn.rnu.isi.eschop.service.CategorieService;
 
 
  
