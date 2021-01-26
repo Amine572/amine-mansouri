@@ -41,20 +41,20 @@ public class CategorieController {
 		/*
 		 * Envoi Vue + Modele MVC pour Affichage donnees vue
 		 */
-		return new ModelAndView("/categorie/showAllCategories", "categories", listeCategories);
+		return new ModelAndView("categorie/showAllCategories", "categories", listeCategories);
 	}
 
 	 	@RequestMapping(value = "/categorie/list", method = RequestMethod.GET)
 	    public String list(Model model) throws Exception {
 	        model.addAttribute("categories", categorieService.getAll());
-	        return "/categorie/showAllCategories"; // Afficher la page showAllCategories.html qui se trouve sous /categorie
+	        return "categorie/showAllCategories"; // Afficher la page showAllCategories.html qui se trouve sous /categorie
 	        
 	    }
 
 	    @RequestMapping(value = "/categorie/get/{id}" , method = RequestMethod.GET)
 	    public String get(@PathVariable Long id, Model model) throws Exception {
 	        model.addAttribute("categorieToShow", categorieService.getByIdCateg(id));
-	        return "/categorie/showCategorie"; // Afficher la page showCategorie.html qui se trouve sous /categorie
+	        return "categorie/showCategorie"; // Afficher la page showCategorie.html qui se trouve sous /categorie
 	    }
 	    
 	    
@@ -87,7 +87,7 @@ public class CategorieController {
 	    public String update(@PathVariable Long id, Model model, final RedirectAttributes redirectAttributes) throws Exception {
 	        Categorie categorie = categorieService.getByIdCateg(id);
 	        model.addAttribute("categorieForm", categorie);
-	        return "/categorie/addUpdateCategorie";
+	        return "categorie/addUpdateCategorie";
 	    }
 	    
 	    @RequestMapping(value = "/categorie/delete/{id}")

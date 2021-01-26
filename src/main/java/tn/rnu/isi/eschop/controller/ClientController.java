@@ -41,20 +41,20 @@ public class ClientController {
 		/*
 		 * Envoi Vue + Modele MVC pour Affichage donnees vue
 		 */
-		return new ModelAndView("/client/showAllClients", "clients", listeClients);
+		return new ModelAndView("client/showAllClients", "clients", listeClients);
 	}
 
 	 	@RequestMapping(value = "/client/list", method = RequestMethod.GET)
 	    public String list(Model model) throws Exception {
 	        model.addAttribute("clients", clientService.getAll());
-	        return "/client/showAllClients"; // Afficher la page showAllClients.html qui se trouve sous /client
+	        return "client/showAllClients"; // Afficher la page showAllClients.html qui se trouve sous /client
 	        
 	    }
 
 	    @RequestMapping(value = "/client/get/{id}" , method = RequestMethod.GET)
 	    public String get(@PathVariable Long id, Model model) throws Exception {
 	        model.addAttribute("clientToShow", clientService.getByIdClient(id));
-	        return "/client/showClient"; // Afficher la page showClient.html qui se trouve sous /client
+	        return "client/showClient"; // Afficher la page showClient.html qui se trouve sous /client
 	    }
 	    
 	    
@@ -87,7 +87,7 @@ public class ClientController {
 	    public String update(@PathVariable Long id, Model model, final RedirectAttributes redirectAttributes) throws Exception {
 	        Client client = clientService.getByIdClient(id);
 	        model.addAttribute("clientForm", client);
-	        return "/client/addUpdateClient";
+	        return "client/addUpdateClient";
 	    }
 	    
 	    @RequestMapping(value = "/client/delete/{id}")
