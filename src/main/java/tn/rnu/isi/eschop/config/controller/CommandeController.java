@@ -1,4 +1,4 @@
-package tn.rnu.isi.eschop.controller;
+package tn.rnu.isi.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import tn.rnu.isi.eschop.model.Commande;
-import tn.rnu.isi.eschop.service.CommandeService;
+import tn.rnu.isi.model.Commande;
+import tn.rnu.isi.service.CommandeService;
 
 
  
-@Controller()
-@RequestMapping("/commande")
+@Controller("commandeController")
 public class CommandeController {
 	
 	private final Logger logger = LoggerFactory.getLogger(CommandeController.class);
@@ -31,7 +30,7 @@ public class CommandeController {
 	CommandeService commandeService;
  
 
-@RequestMapping(value = "/listAll", method = RequestMethod.GET)
+@RequestMapping(value = "/commande/listAll", method = RequestMethod.GET)
 
 	protected ModelAndView showAllCommandes() throws Exception {
 		/*
@@ -42,19 +41,24 @@ public class CommandeController {
 		/*
 		 * Envoi Vue + Modele MVC pour Affichage donnees vue
 		 */
-		return new ModelAndView("commande/showAllCommandes", "commandes", listeCommandes);
+		return new ModelAndView("/commande/showAllCommandes", "commandes", listeCommandes);
 	}
 
- 
+	 	@RequestMapping(value = "/commande/list", method = RequestMethod.GET)
+	    public String list(Model model) throws Exception {
+	        model.addAttribute("commandes", commandeService.getAll());
+	        return "/commande/showAllCommandes"; // Afficher la page showAllCommandes.html qui se trouve sous /commande
+	        
+	    }
 
-	    @RequestMapping(value = "/get/{id}" , method = RequestMethod.GET)
+	    @RequestMapping(value = "/commande/get/{id}" , method = RequestMethod.GET)
 	    public String get(@PathVariable Long id, Model model) throws Exception {
 	        model.addAttribute("commandeToShow", commandeService.getByIdCommande(id));
-	        return "commande/showCommande"; // Afficher la page showCommande.html qui se trouve sous /commande
+	        return "/commande/showCommande"; // Afficher la page showCommande.html qui se trouve sous /commande
 	    }
 	    
 	    
-	    @RequestMapping(value = "/save", method = RequestMethod.POST)
+	    @RequestMapping(value = "/commande/save", method = RequestMethod.POST)
 	    public String saveOrUpdate(@ModelAttribute("commandeForm") Commande commande, Model model, final RedirectAttributes redirectAttributes) throws Exception {
 	    	try {
 				
@@ -79,14 +83,14 @@ public class CommandeController {
 	    
 
  
-	    @RequestMapping("/update/{id}")
+	    @RequestMapping("/commande/update/{id}")
 	    public String update(@PathVariable Long id, Model model, final RedirectAttributes redirectAttributes) throws Exception {
 	        Commande commande = commandeService.getByIdCommande(id);
 	        model.addAttribute("commandeForm", commande);
-	        return "commande/addUpdateCommande";
+	        return "/commande/addUpdateCommande";
 	    }
 	    
-	    @RequestMapping(value = "/delete/{id}")
+	    @RequestMapping(value = "/commande/delete/{id}")
 	    public String delete(@PathVariable Long id) throws Exception {
 	        commandeService.deleteCommande(id);
 	        return "redirect:/commande/listAll";

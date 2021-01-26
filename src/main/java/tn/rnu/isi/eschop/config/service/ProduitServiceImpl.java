@@ -1,4 +1,4 @@
-package tn.rnu.isi.eschop.service;
+package tn.rnu.isi.service;
 
 import java.util.List;
 
@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import tn.rnu.isi.eschop.model.*;
+import tn.rnu.isi.model.Produit;
+
 
 @Service
 @Transactional

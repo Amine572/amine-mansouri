@@ -1,9 +1,12 @@
-package tn.rnu.isi.eschop.service;
+package tn.rnu.isi.service;
 
 import java.util.Date;
 import java.util.List;
 
-import tn.rnu.isi.eschop.model.*; 
+import tn.rnu.isi.model.Commande;
+import tn.rnu.isi.model.Produit;
+
+ 
 
 
 public interface CommandeService {

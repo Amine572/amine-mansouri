@@ -1,4 +1,4 @@
-package tn.rnu.isi.eschop.model;
+package tn.rnu.isi.model;
 // Generated 22 nov. 2016 03:13:26 by Hibernate Tools 4.3.5.Final
 
  import java.math.BigDecimal;
