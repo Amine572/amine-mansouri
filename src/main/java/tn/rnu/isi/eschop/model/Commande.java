@@ -94,7 +94,7 @@ public class Commande implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/mm/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "DATE_COMMANDE", length = 10)
 	public Date getDateCommande() {
 		return this.dateCommande;
