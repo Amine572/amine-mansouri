@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import tn.rnu.isi.model.Commande;
-import tn.rnu.isi.service.CommandeService;
+import tn.rnu.isi.eschop.model.Commande;
+import tn.rnu.isi.eschop.service.CommandeService;
 
 
  
